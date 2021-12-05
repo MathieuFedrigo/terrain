@@ -3,8 +3,8 @@ import { Pressable, StyleSheet } from 'react-native';
 import { SquareData } from '../interfaces/SquareData';
 import { perlin } from '../helpers/perlin';
 import { CenterContext } from '../context/CenterContext';
+import { SQUARE_SIZE } from '../constants/board';
 
-const SQUARE_SIZE = 40;
 const divide = 9;
 
 const getColor = ({ x, y }: SquareData): string =>
