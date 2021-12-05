@@ -3,7 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import { generateGrid } from './helpers/generateGrid';
 import { perlin } from './helpers/perlin';
 import { CropGrid } from './components/CropGrid';
-import { BOARD_SIZE, INITIAL_CENTER } from './constants/board';
+import {
+  BOARD_SIZE,
+  FRAME_RATE_IN_MS,
+  INITIAL_CENTER,
+} from './constants/board';
 import { SquareData } from './interfaces/SquareData';
 import { CenterContext } from './context/CenterContext';
 import { getCloserPoint } from './helpers/getCloserPoint';
@@ -17,7 +21,10 @@ export default function App() {
   const [goalCenter, setGoalCenter] = useState<SquareData>(INITIAL_CENTER);
 
   if (center.x !== goalCenter.x || center.y !== goalCenter.y) {
-    setTimeout(() => setCenter(getCloserPoint(center, goalCenter)), 150);
+    setTimeout(
+      () => setCenter(getCloserPoint(center, goalCenter)),
+      FRAME_RATE_IN_MS,
+    );
   }
   const { maxHorizontalSquares, maxVerticalSquares } = useGridSize();
 
