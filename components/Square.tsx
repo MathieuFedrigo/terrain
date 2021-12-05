@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { FunctionComponent, useContext } from 'react';
+import { Pressable, StyleSheet } from 'react-native';
 import { SquareData } from '../interfaces/SquareData';
 import { perlin } from '../helpers/perlin';
+import { CenterContext } from '../context/CenterContext';
 
 const SQUARE_SIZE = 40;
 const divide = 9;
@@ -24,7 +25,11 @@ const styles = StyleSheet.create({
 });
 
 export const Square: FunctionComponent<Props> = ({ square }) => {
+  const setCenter = useContext(CenterContext);
   return (
-    <View style={[styles.square, { backgroundColor: getColor(square) }]} />
+    <Pressable
+      style={[styles.square, { backgroundColor: getColor(square) }]}
+      onPress={() => setCenter(square)}
+    />
   );
 };
