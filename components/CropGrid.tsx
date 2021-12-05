@@ -7,17 +7,20 @@ interface Props {
   squares: SquareData[][];
   maxHorizontalSquares: number;
   maxVerticalSquares: number;
+  center: SquareData;
 }
 
 export const CropGrid: FunctionComponent<Props> = ({
   squares,
   maxHorizontalSquares,
   maxVerticalSquares,
+  center,
 }) => {
   const croppedSquares = cropSquares({
     squares,
     maxHorizontalSquares,
     maxVerticalSquares,
+    center,
   });
   return <Grid squares={croppedSquares} />;
 };

@@ -3,8 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { generateGrid } from './helpers/generateGrid';
 import { perlin } from './helpers/perlin';
 import { CropGrid } from './components/CropGrid';
+import { BOARD_SIZE, INITIAL_CENTER } from './constants/board';
 
-const data = generateGrid(100);
+const data = generateGrid(BOARD_SIZE);
 
 export default function App() {
   perlin.seed();
@@ -14,6 +15,7 @@ export default function App() {
         squares={data}
         maxHorizontalSquares={10}
         maxVerticalSquares={15}
+        center={INITIAL_CENTER}
       />
     </View>
   );
