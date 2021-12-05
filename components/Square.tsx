@@ -25,11 +25,12 @@ const styles = StyleSheet.create({
 });
 
 export const Square: FunctionComponent<Props> = ({ square }) => {
-  const setCenter = useContext(CenterContext);
+  const moveToSquare = useContext(CenterContext);
+
   return (
     <Pressable
       style={[styles.square, { backgroundColor: getColor(square) }]}
-      onPress={() => setCenter(square)}
+      onPress={() => moveToSquare(square)}
     />
   );
 };
